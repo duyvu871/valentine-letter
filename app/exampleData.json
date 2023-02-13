@@ -1,0 +1,20 @@
+[
+    {
+        "columns": [
+            "STT",
+            "Select",
+            "Product_name",
+            "Category",
+            "Price"
+        ],
+        "data": [
+           [" ", false, "hoi cham", "shopping", 12],
+           [" ", false, "hoi cham", "shopping", 12],
+           [" ", false, "hoi cham", "shopping", 12],
+           [" ", false, "hoi cham", "shopping", 12],
+           [" ", false, "hoi cham", "shopping", 12],
+           [" ", false, "Fish", "Play", 3],
+           [" ", false, "At thưm", "Overlay", 99]
+        ]
+    }
+]

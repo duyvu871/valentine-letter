@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta property="og:image" content="https://img.freepik.com/free-vector/simple-happy-valentines-day-celebration-design_1017-29881.jpg">
+    <title>Tri ân khách hàng ngày valentine</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Paytone+One&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://kit.fontawesome.com/4f3ce16e3e.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="../style/text-animation.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase.js"></script>
+
+    <style>
+      html {
+        width: 100%;
+        height: 100%;
+      }
+
+      body {
+        font-family: "Paytone One", sans-serif;
+        display: flex;
+        background: #ffe4db;
+      }
+
+      body {
+        /* background: linear-gradient(45deg,pink,violet); */
+        width: 100vw;
+        height: 100vh;
+        margin: 0px;
+        overflow: hidden;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        overflow: hidden;
+      }
+
+      #container {
+        min-width: 30%;
+        min-height: 30%;
+        backdrop-filter: blur(5px);
+        background: rgba(0, 0, 0, 0);
+        box-shadow: 5px 5px 5px 2px black;
+        border-radius: 20px;
+        z-index: 10;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        font-size: 30px;
+        padding: 5px 10px;
+        /* font-family: "Poppins",sans-serif; */
+      }
+      .fa-heart {
+        color: rgb(255, 0, 102);
+        font-size: 25px;
+        position: absolute;
+        animation: heartMove linear 1;
+        top: -10vh;
+        z-index: 0;
+      }
+
+      @keyframes heartMove {
+        0% {
+          transform: translateY(-10vh);
+        }
+        100% {
+          transform: translateY(110vh);
+        }
+      }
+
+      .heart {
+        display: flex;
+        place-content: center;
+        margin-top: 20px;
+      }
+
+      img {
+        max-width: 60% !important;
+      }
+
+      #blob {
+        /* background: black; */
+        /* border-radius: 50%; */
+        /* box-shadow: #f7cfc1; */
+        /* margin: 10px; */
+        /* height: 20px;
+  width: 20px; */
+        transform: scale(1);
+        animation: pulse-black 2s infinite;
+      }
+
+      @keyframes pulse-black {
+        0% {
+          transform: scale(0.92);
+          /* box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.7); */
+        }
+
+        70% {
+          transform: scale(1);
+          /* box-shadow: 0 0 0 10px rgba(0, 0, 0, 0); */
+        }
+
+        100% {
+          transform: scale(0.92);
+          /* box-shadow: 0 0 0 0 rgba(0, 0, 0, 0); */
+        }
+      }
+      #to {
+        font-size: 0.8rem;
+        margin-bottom: 10px;
+      }
+      #content {
+        /* text-align: center; */
+        /* display: flex;
+        place-content: center; */
+        margin-top: 100px;
+        font-size: 1.1rem;
+      }
+      .wrap{
+        display: block;
+      
+        height: 100%;
+      }
+    </style>
+  </head>
+  <body >
+    <div class="heart" id="wrapper">
+      <img
+        id="blob"
+        src="../assets//vecteezy_pixel-heart-icon_10528948-removebg-preview.png"
+        alt=""
+      />
+    </div>
+
+    <div class="letter">
+      <div class="envelope">
+        <div class="envelope-flap"></div>
+        <div class="envelope-paper"></div>
+        <div class="envelope-detail"></div>
+      </div>
+      <div class="paper">
+        <div class="paper-close z-[10]">x</div>
+
+        <div class="paper-content overflow-y-scroll h-[240px] text-[#F88E8E]">
+          <!-- Lorem ipsum dolor sit, amet consectetur adipisicing elit. Laboriosam, quos asperiores eaque animi blanditiis nostrum sequi dolorem accusamus perferendis neque suscipit culpa odit natus sapiente cumque eius. Ipsa, sint vero.
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Id, sit enim? Pariatur aliquam iure deleniti odio provident magnam dolorum aspernatur doloribus, id in dolore totam, quas voluptatem cumque debitis quam. -->
+        </div>
+      </div>
+    </div>
+    <script src="./app.js"></script>
+    <script>
+      const url = new URL(location.href);
+
+      const idCustomer = url.searchParams.get("id") ?? 0;
+
+      const idUser = url.searchParams.get("auth") ?? null;
+
+      const body = document.querySelector("body");
+
+      function createHeart() {
+        const heart = document.createElement("div");
+        heart.className = "fas fa-heart";
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.animationDuration = Math.random() * 3 + 2 + "s";
+        body.appendChild(heart);
+      }
+      setInterval(createHeart, 200);
+      setInterval(function name(params) {
+        var heartArr = document.querySelectorAll(".fa-heart");
+        if (heartArr.length > 20) {
+          heartArr[0].remove();
+        }
+        //console.log(heartArr);
+      }, 100);
+
+      document
+        .querySelector(".envelope")
+        .addEventListener("click", function () {
+          if (
+            document.querySelector(".letter").classList.contains("letter--open")
+          ) {
+            document.querySelector(".letter").classList.remove("letter--open");
+            document.querySelector(".letter").classList.add("letter--close");
+            setTimeout(function () {
+              document
+                .querySelector(".letter")
+                .classList.remove("letter--close");
+            }, 600);
+          } else {
+            document.querySelector(".letter").classList.remove("letter--close");
+            document.querySelector(".letter").classList.add("letter--open");
+
+            database
+            .ref("table/" + idUser + '/data/' + idCustomer)
+            .once("value", (snap) => {
+                // console.log(snap.val());
+                const data = snap.val();
+                document.title = ""
+                document.querySelector('.paper-content').innerHTML = `
+                    <span class="wrap" >
+                      <p id="to" class="typewriter" style="--n:${data[2].length + 4}">To ${data[2]}</p>
+                      <span id="content" class="" style="--n:${data[3].length + 4}"> ${data[3]}</span>
+                    </span>
+                `
+                setTimeout(() => {
+                  document.querySelector('#content').classList.add('type')
+                }, 2000)             
+
+                }).then((res) => {
+                
+                });
+          }
+        });
+
+      document
+        .querySelector(".paper-close")
+        .addEventListener("click", function () {
+          document.querySelector(".letter").classList.remove("letter--open");
+          document.querySelector(".letter").classList.add("letter--close");
+          setTimeout(function () {
+            document.querySelector(".letter").classList.remove("letter--close");
+          }, 600);
+        });
+    </script>
+  </body>
+</html>

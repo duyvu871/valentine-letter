@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="title" content="Gửi thiệp chúc mừng tới người bạn thân yêu" />
+    <meta name="description" content="Nếu bạn đang băn khoăn về việc gửi thiệp chúc mừng đến người yêu vào ngày valentine thì bạn nên vào đây" />
+    <meta http-equiv=”content-language” content=”vi” />
+    <meta property="og:image" content="https://img.freepik.com/free-vector/simple-happy-valentines-day-celebration-design_1017-29881.jpg">
+    <title>Gửi thiệp chúc mừng tới người bạn thân yêu</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://kit.fontawesome.com/50ecca59bf.js" crossorigin="anonymous"></script>
+    <script
+        src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="./style/select_all.css">
+    <script src="./app/localApi.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js" integrity="sha512-CNgIRecGo7nphbeZ04Sc13ka07paqdeTu0WR1IM4kNcpmBAUSHSQX0FslNhTDadL4O5SAGapGt4FodqL8My0mA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <style>
+        canvas, img {
+            vertical-align: inherit;
+        }
+    </style>
+</head>
+<body>
+    <div class="app">
+        <header class="m-4 mb-6">
+            <button id="dropdownInformationButton" data-dropdown-toggle="off" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button" >
+                Menu
+                <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </button>
+
+            <div id="dropdownInformation" class="hidden z-10 w-fit bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600"  data-popper-reference-hidden="" data-popper-escaped="" style="position: absolute;inset: 56px auto auto 13px; "data-popper-placement="top">
+                <div class="py-3 px-4 text-sm text-gray-900 dark:text-white">
+                    <div class="font-medium" >Author: TheZoo</div>
+                    <div class="font-medium ">Email: zoocp1232gmail.com</div>
+                </div>
+                <!-- <ul class="py-1 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownInformationButton">
+                    <li>
+                        <a href="#" class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Dashboard</a>
+                    </li>
+                    <li>
+                        <a href="#" class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Settings</a>
+                    </li>
+                        <li>
+                        <a href="#" class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Earnings</a>
+                    </li>
+                </ul> -->
+                <div class="py-1 hidden" id="logout-button" >
+                    <p  class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white ">Sign out</p>
+                </div>
+                <div class="py-1" id="login-button">
+                    <p class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Sign in</p>
+                </div>
+            </div>
+        </header>
+        <div class="main mb-8">
+            <div class="upload-modal hidden fixed z-30 top-0 p-[50px] h-[100%] w-[100%] bg-[#c8c8c8a6]">
+
+            </div>
+            <div class="max-w-2xl w-fit mx-auto exportTable hidden flex flex-row gap-2 mb-8">
+                <button class="ml-2 text-white bg-green-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button" >
+                    Tạo File
+                    <span class="ml-2" > <i class="fa fa-file-excel-o"></i></span>
+                </button>
+                <div class="w-[60%] md:pb-0">
+                    <div>
+                        <label class="input-field inline-flex items-baseline border-solid border-2 rounded-lg shadow-md bg-white p-4 ">
+                            <span class="flex-none text-dusty-blue-darker select-none leading-none">
+                                file_of_zoo/
+                            </span>
+                            <div class="flex-1 leading-none">
+                                <input id="fileName" type="text" class=" placeholder-blue w-full p-0 outline-none  ext-dusty-blue-darker" name="handle" placeholder="Tên file">
+                            </div>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="max-w-[60rem] mx-auto">
+
+                <div class="flex flex-col">
+                <div class="overflow-x-auto shadow-md sm:rounded-lg">
+                    <div class="inline-block min-w-full align-middle">
+                        <div class="">
+                            <table id="data-table" class="min-w-full divide-y divide-gray-200 table-fixed dark:divide-gray-700">
+                                <thead id="table-list" class="bg-gray-50 dark:bg-gray-700">
+                                    <tr>
+                                       
+                                    </tr>
+                                </thead>
+                                <tbody id="table-items" class="bg-white divide-y divide-gray-200 dark:bg-gray-800 dark:divide-gray-700">
+                                
+                                
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        </div>
+
+        <div class="delete-row hidden pl-5">
+            <button id="delete-row_button" class="  px-10 text-white bg-[#ff2525] hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button" >
+               Xóa
+            </button>
+            <button id="createQR_button" class="  px-10 text-white bg-green-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button" >
+                Tạo QR
+             </button>
+        </div>
+
+        <div id="add-item_form" class=" max-w-[30rem] mx-auto" >
+        
+        </div>
+        <div class="content">
+            
+        </div>
+        <footer class="p-4 bg-white rounded-lg shadow md:flex md:items-center md:justify-between md:p-6 dark:bg-gray-800 b-t-black">
+            <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2022 <a href="https://duhentaiblog.xyz" class="hover:underline">ZooTeam™</a>. All Rights Reserved.
+            </span>
+            <ul class="flex flex-wrap items-center mt-3 text-sm text-gray-500 dark:text-gray-400 sm:mt-0">
+                <li>
+                    <a href="#" class="mr-4 hover:underline md:mr-6 ">About</a>
+                </li>
+                <li>
+                    <a href="#" class="mr-4 hover:underline md:mr-6">Privacy Policy</a>
+                </li>
+                <li>
+                    <a href="#" class="mr-4 hover:underline md:mr-6">Licensing</a>
+                </li>
+                <li>
+                    <a href="#" class="hover:underline">Contact</a>
+                </li>
+            </ul>
+        </footer>
+    </div>
+   <div class="modelQRcode absolute z-[99]">
+    <div class="qr-modal z-100" id="qr-modal">
+        <div class="qr-modal-overlay z-[101]" id="qr-modal-overlay"></div>
+      
+        <div class="relative top-6 z-[102] max-w-2xl mx-auto qr-modal-container bg-white p-6 rounded-lg shadow-lg">
+          <header class="flex justify-between items-center mb-3">
+            <h3 class="font-medium text-lg">Tên Khách: <span id="customer-name"></span></h3>
+            <button class="text-gray-600" id="close-qr-modal">
+              <svg class="w-6 h-6" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor"><path d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+          </header>
+      
+          <div class="text-gray-700 mb-6 flex place-content-center" id="qr-preview">
+           
+          </div>
+
+            <div class="p-[4px] m-[12px] border-2 border-black" id="url-preview">
+
+            </div>
+      
+          <footer class="flex justify-end" id="modal-featured">
+            
+          </footer>
+        </div>
+      </div>
+   </div>
+    <script>
+        
+        $('#dropdownInformationButton').click(function() {
+            $('#dropdownInformation').toggle()
+        })
+        $('.upload-modal').click(function() { $('.upload-modal').toggle()})
+    </script>
+    <script src="./app/app.js" ></script>
+    <script src="./app/getProduct.js" ></script>
+    <script src="./app/add_column_item.js" ></script>
+    <script src="./app/filter_items.js" ></script>
+    <script src="./app/sort_items.js" ></script>
+    <script src="./app/exportExcel.js"></script>
+    <script src="./app/excel.js"></script>
+    <script src="./app/upload_file.js"></script>
+    <script>
+    //    $(document).ready( function () {
+    //         $('#data-table').DataTable();
+    //     } );
+    </script>
+</body>
+</html>

@@ -1,0 +1,556 @@
+/* TEXT GROW */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+:root {
+  --color-primary: #f6aca2;
+  --color-secondary: #f49b90;
+  --color-tertiary: #f28b7d;
+  --color-quaternary: #f07a6a;
+  --color-quinary: #ee6352;
+  /*
+  --color-primary: #5192ED;
+  --color-secondary: #69A1F0;
+  --color-tertiary: #7EAEF2;
+  --color-quaternary: #90BAF5;
+  --color-quinary: #A2C4F5;
+  */
+}
+
+body {
+  min-height: 100vh;
+  font-family: 'Paytone One', sans-serif;
+  font-weight: 300;
+  font-size: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+  background-color: #eff8e2;
+}
+
+.content {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+}
+
+.text_shadows {
+  text-shadow: 3px 3px 0 var(--color-secondary), 6px 6px 0 var(--color-tertiary), 9px 9px var(--color-quaternary), 12px 12px 0 var(--color-quinary);
+  font-family: 'Paytone One', sans-serif;
+  font-weight: 400;
+  text-transform: uppercase;
+  font-size: calc(2rem + 5vw);
+  text-align: center;
+  margin: 0;
+  color: var(--color-primary);
+  -webkit-animation: shadows 1.2s ease-in infinite, move 1.2s ease-in infinite;
+          animation: shadows 1.2s ease-in infinite, move 1.2s ease-in infinite;
+  letter-spacing: 0.4rem;
+}
+
+@-webkit-keyframes shadows {
+  0% {
+    text-shadow: none;
+  }
+  10% {
+    text-shadow: 3px 3px 0 var(--color-secondary);
+  }
+  20% {
+    text-shadow: 3px 3px 0 var(--color-secondary), 6px 6px 0 var(--color-tertiary);
+  }
+  30% {
+    text-shadow: 3px 3px 0 var(--color-secondary), 6px 6px 0 var(--color-tertiary), 9px 9px var(--color-quaternary);
+  }
+  40% {
+    text-shadow: 3px 3px 0 var(--color-secondary), 6px 6px 0 var(--color-tertiary), 9px 9px var(--color-quaternary), 12px 12px 0 var(--color-quinary);
+  }
+  50% {
+    text-shadow: 3px 3px 0 var(--color-secondary), 6px 6px 0 var(--color-tertiary), 9px 9px var(--color-quaternary), 12px 12px 0 var(--color-quinary);
+  }
+  60% {
+    text-shadow: 3px 3px 0 var(--color-secondary), 6px 6px 0 var(--color-tertiary), 9px 9px var(--color-quaternary), 12px 12px 0 var(--color-quinary);
+  }
+  70% {
+    text-shadow: 3px 3px 0 var(--color-secondary), 6px 6px 0 var(--color-tertiary), 9px 9px var(--color-quaternary);
+  }
+  80% {
+    text-shadow: 3px 3px 0 var(--color-secondary), 6px 6px 0 var(--color-tertiary);
+  }
+  90% {
+    text-shadow: 3px 3px 0 var(--color-secondary);
+  }
+  100% {
+    text-shadow: none;
+  }
+}
+
+@keyframes shadows {
+  0% {
+    text-shadow: none;
+  }
+  10% {
+    text-shadow: 3px 3px 0 var(--color-secondary);
+  }
+  20% {
+    text-shadow: 3px 3px 0 var(--color-secondary), 6px 6px 0 var(--color-tertiary);
+  }
+  30% {
+    text-shadow: 3px 3px 0 var(--color-secondary), 6px 6px 0 var(--color-tertiary), 9px 9px var(--color-quaternary);
+  }
+  40% {
+    text-shadow: 3px 3px 0 var(--color-secondary), 6px 6px 0 var(--color-tertiary), 9px 9px var(--color-quaternary), 12px 12px 0 var(--color-quinary);
+  }
+  50% {
+    text-shadow: 3px 3px 0 var(--color-secondary), 6px 6px 0 var(--color-tertiary), 9px 9px var(--color-quaternary), 12px 12px 0 var(--color-quinary);
+  }
+  60% {
+    text-shadow: 3px 3px 0 var(--color-secondary), 6px 6px 0 var(--color-tertiary), 9px 9px var(--color-quaternary), 12px 12px 0 var(--color-quinary);
+  }
+  70% {
+    text-shadow: 3px 3px 0 var(--color-secondary), 6px 6px 0 var(--color-tertiary), 9px 9px var(--color-quaternary);
+  }
+  80% {
+    text-shadow: 3px 3px 0 var(--color-secondary), 6px 6px 0 var(--color-tertiary);
+  }
+  90% {
+    text-shadow: 3px 3px 0 var(--color-secondary);
+  }
+  100% {
+    text-shadow: none;
+  }
+}
+@-webkit-keyframes move {
+  0% {
+    transform: translate(0px, 0px);
+  }
+  40% {
+    transform: translate(-12px, -12px);
+  }
+  50% {
+    transform: translate(-12px, -12px);
+  }
+  60% {
+    transform: translate(-12px, -12px);
+  }
+  100% {
+    transform: translate(0px, 0px);
+  }
+}
+@keyframes move {
+  0% {
+    transform: translate(0px, 0px);
+  }
+  40% {
+    transform: translate(-12px, -12px);
+  }
+  50% {
+    transform: translate(-12px, -12px);
+  }
+  60% {
+    transform: translate(-12px, -12px);
+  }
+  100% {
+    transform: translate(0px, 0px);
+  }
+}
+
+
+/* TYPING TEXT */
+
+.typewriter {
+  color: #FFEEE8;
+  font-family: 'Paytone One', sans-serif;
+  overflow: hidden; /* Ensures the content is not revealed until the animation */
+  border-right: .15em solid #F88E8E; /* The typwriter cursor */
+  white-space: nowrap; /* Keeps the content on a single line */
+  /* margin: 0 auto; Gives that scrolling effect as the typing happens */
+  letter-spacing: .15em; /* Adjust as needed */
+  animation: 
+    typing 3.5s steps(60, end),
+    blink-caret .5s step-end ;
+}
+
+/* The typing effect */
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+/* The typewriter cursor effect */
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color: #F88E8E }
+}
+
+
+
+
+.type {
+    color:#0000;
+    background:
+    linear-gradient(-90deg,#FFEEE8 5px,#0000 0) 10px 0,
+    linear-gradient(#FFEEE8 0 0) 0 0;
+    background-size:calc(var(--n)*1ch) 200%;
+    -webkit-background-clip:padding-box,text;
+    background-clip:padding-box,text;
+    background-repeat:no-repeat;
+    animation: 
+     b .3s infinite steps(1),   
+     t calc(var(--n)*.1s)  forwards; 
+     /* animation: t calc(var(--n)*.3s) linear infinite alternate; */
+     /* steps(var(--n)) */
+  }
+  
+  @keyframes t{
+    from {background-size:0 200%}
+    /* to {background-size:0 0 ;} */
+  }
+  @keyframes b{
+    50% {background-position:0 -100%,0 0}
+  }
+/* OPEN LETTER */
+
+@-webkit-keyframes upthenscale {
+    0% {
+      transform: translateY(250px);
+    }
+    50% {
+      transform: translateY(0);
+    }
+    60% {
+      height: 100px;
+      width: 90px;
+      transform: translateY(0);
+    }
+    100% {
+      height: 250px;
+      width: 100%;
+      transform: translateY(0);
+    }
+  }
+  @keyframes upthenscale {
+    0% {
+      transform: translateY(250px);
+    }
+    50% {
+      transform: translateY(0);
+    }
+    60% {
+      height: 100px;
+      width: 90px;
+      transform: translateY(0);
+    }
+    100% {
+      height: 250px;
+      width: 100%;
+      transform: translateY(0);
+    }
+  }
+  @-webkit-keyframes scalethendown {
+    0% {
+      height: 250px;
+      width: 100%;
+      transform: translateY(0);
+    }
+    50% {
+      height: 100px;
+      width: 90px;
+      transform: translateY(0);
+    }
+    60% {
+      transform: translateY(0);
+    }
+    100% {
+      transform: translateY(250px);
+    }
+  }
+  @keyframes scalethendown {
+    0% {
+      height: 250px;
+      width: 100%;
+      transform: translateY(0);
+    }
+    50% {
+      height: 100px;
+      width: 90px;
+      transform: translateY(0);
+    }
+    60% {
+      transform: translateY(0);
+    }
+    100% {
+      transform: translateY(250px);
+    }
+  }
+  @-webkit-keyframes waitfade {
+    0%, 50% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  @keyframes waitfade {
+    0%, 50% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  @-webkit-keyframes wiggle {
+    0% {
+      transform: translateY(310px) rotate(0);
+    }
+    25% {
+      transform: translateY(310px) rotate(2deg);
+    }
+    50% {
+      transform: translateY(310px) rotate(0deg);
+    }
+    75% {
+      transform: translateY(310px) rotate(-2deg);
+    }
+    100% {
+      transform: translateY(310px) rotate(0);
+    }
+  }
+  @keyframes wiggle {
+    0% {
+      transform: translateY(310px) rotate(0);
+    }
+    25% {
+      transform: translateY(310px) rotate(2deg);
+    }
+    50% {
+      transform: translateY(310px) rotate(0deg);
+    }
+    75% {
+      transform: translateY(310px) rotate(-2deg);
+    }
+    100% {
+      transform: translateY(310px) rotate(0);
+    }
+  }
+  .letter {
+    margin: 150px auto;
+    width: 100%;
+    padding: 25px;
+    max-width: 500px;
+    height: 430px;
+    position: absolute;
+    overflow: hidden;
+    display: block;
+    z-index: 100;
+  }
+  
+  .letter--open .paper {
+    -webkit-animation-name: upthenscale;
+            animation-name: upthenscale;
+    -webkit-animation-duration: 0.6s;
+            animation-duration: 0.6s;
+    -webkit-animation-fill-mode: forwards;
+            animation-fill-mode: forwards;
+  }
+  
+  .letter--close .paper {
+    -webkit-animation-name: scalethendown;
+            animation-name: scalethendown;
+    -webkit-animation-duration: 0.4s;
+            animation-duration: 0.4s;
+    -webkit-animation-fill-mode: forwards;
+            animation-fill-mode: forwards;
+  }
+  
+  .letter--open .paper-content {
+    -webkit-animation-name: waitfade;
+            animation-name: waitfade;
+    -webkit-animation-duration: 1.5s;
+            animation-duration: 1.5s;
+    -webkit-animation-fill-mode: forwards;
+            animation-fill-mode: forwards;
+  }
+  
+  .letter--open .envelope {
+    -webkit-animation: pause;
+            animation: pause;
+  }
+  
+  .paper-content {
+    color: #545454;
+    font-family: 'Paytone One', sans-serif;
+    font-weight: 700;
+    padding: 25px;
+    opacity: 0;
+    font-size: 1rem;
+  }
+  
+  .paper {
+    height: 50px;
+    width: 90px;
+    color: #FFEEE8;
+    background: #F88E8E;
+    transform: translateY(250px);
+    margin: 0 auto;
+    transition: transform 0.3s 0.1s ease;
+    border-radius: 2px;
+    position: relative;
+    border-radius: 10px;
+    /* z-index: 4; */
+  }
+  
+  .envelope {
+    width: 94px;
+    height: 60px;
+    background: #fff;
+    /* background: #f36363; */
+    position: relative;
+    margin: auto;
+    z-index: 2;
+    cursor: pointer;
+    border-radius: 3px;
+    transition: box-shadow 0.3s ease;
+    transform: translateY(310px);
+    -webkit-animation: wiggle 0.3s 0.2s infinite;
+            animation: wiggle 0.3s 0.2s infinite;
+    box-shadow: 3px 1px 20px 5px #0000003b;
+  }
+  .envelope:hover {
+    -webkit-animation: pause;
+            animation: pause;
+  }
+  .envelope:hover .envelope-paper {
+    transform: translateY(-20px);
+  }
+  .envelope:hover .envelope-flap {
+    transform: translateY(-45px);
+  }
+  .envelope:hover .envelope-detail::after {
+    visibility: hidden;
+  }
+  
+  .envelope-paper {
+    height: 50px;
+    width: 93px;
+    background: #f36363;
+    transform: translateY(0);
+    margin: 0 auto;
+    transition: transform 0.3s 0.1s ease;
+    border-radius: 2px;
+    position: absolute;
+    border: 2px solid transparent;
+    /* z-index: ; */
+  }
+  
+  .letter--open .paper {
+    z-index: 10;
+    top: -15px;
+    box-shadow: 1px 3px 20px 5px #00000024;;
+  }
+
+  .letter--open .envelope-paper {
+    visibility: hidden;
+  }
+  
+  .letter--open .envelope-detail::after {
+    visibility: hidden;
+  }
+  
+  .letter--close .envelope-paper {
+    visibility: hidden;
+  }
+  
+  .envelope-flap {
+    content: "";
+    width: 0;
+    height: 0;
+    border-left: 45px solid transparent;
+    border-right: 45px solid transparent;
+    border-bottom: 45px solid #fff;
+    display: block;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    margin: auto;
+    transform: translateY(0);
+    /* z-index: 3; */
+  }
+  
+  .letter--open .envelope-flap {
+    transform: translateY(-45px);
+  }
+  
+  .letter--open .envelope-detail {
+    border-top: 2px solid #0000003b;
+  }
+  
+  .envelope-detail {
+    overflow: hidden;
+    height: 100%;
+    width: 100%;
+    display: block;
+    position: absolute;
+    background: #fff;
+    /* background: #f36363; */
+    border-top: 2px solid transparent;
+  }
+  .envelope-detail:before {
+    content: "";
+    width: 70px;
+    height: 70px;
+    background: #fff;
+    /* background: #f36363; */
+    display: inline-block;
+    display: block;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 27px;
+    margin: auto;
+    transform: rotate(45deg);
+    border: 4px solid #0000003b;
+  }
+  .envelope-detail:after {
+    content: "";
+    width: 70px;
+    height: 70px;
+    background: #fff;
+    /* background: #f36363; */
+    display: block;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: -45px;
+    margin: auto;
+    transform: rotate(45deg);
+    border: 4px solid #0000003b;
+  }
+  
+  .envelope__fold {
+    height: 25px;
+    width: 86px;
+    background: #fff;
+    /* background: #f36363; */
+    border: 4px solid #0000003b;
+    display: block;
+    position: absolute;
+    bottom: 30px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    transition: all 0.3s ease;
+    border-radius: 3px;
+  }
+  
+  .paper-close {
+    position: absolute;
+    right: 10px;
+    top: 5px;
+    display: inline-block;
+    cursor: pointer;
+  }
