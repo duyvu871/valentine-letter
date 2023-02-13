@@ -381,24 +381,28 @@ var createFeatured = {
             $('#customer-name').text(products.data[index][2])
             $('#qr-preview').html('')            
             QR.createQR('qr-preview',  baseURL, 200);
-            var uri = document.querySelector('#qr-preview img').src;
+          
             $('#modal-featured').html(`
                 <button class="bg-gray-300 px-4 py-2 rounded" id="copy-qr">Copy</button>
                 <button class="bg-blue-500 px-4 py-2 rounded text-white ml-4" id="download-qr">
-                 <a download="${products.data[index][2]}.png" href="${uri}">Tải Xuống</a>
+                 Tải xuống
                 </button>
+                <a download="${products.data[index][2]}.png" href="${""}" style="display:none">Tải Xuống</a>
             `);
             $('#url-preview').html(`<a href="${baseURL}">${baseURL}</a>`)
 
             $('#copy-qr').click(() => {
               // var uri = document.querySelector('#qr-preview img').src;
                 QR.copyQR(uri);
+            }) 
+         
+            $('#download-qr').click(() => {
+                var uri = document.querySelector('#qr-preview img').src;
+                // console.log(document.querySelector('#qr-preview img').src);
+                // QR.downloadQR(uri, products.data[index][2]);
+                document.querySelector('#modal-featured a').href = uri
+                document.querySelector('#modal-featured a').click()
             })
-            // $('#download-qr').click(() => {
-            //     // var uri = document.querySelector('#qr-preview img').src;
-            //     // console.log(document.querySelector('#qr-preview img').length);
-            //     // QR.downloadQR(uri, products.data[index][2]);
-            // })
         })
      })
   },
