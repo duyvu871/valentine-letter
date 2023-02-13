@@ -380,22 +380,25 @@ var createFeatured = {
             $('#qr-modal').toggle()
             $('#customer-name').text(products.data[index][2])
             $('#qr-preview').html('')            
-            QR.createQR('qr-preview',  baseURL, 200)
+            QR.createQR('qr-preview',  baseURL, 200);
+            var uri = document.querySelector('#qr-preview img').src;
             $('#modal-featured').html(`
                 <button class="bg-gray-300 px-4 py-2 rounded" id="copy-qr">Copy</button>
-                <button class="bg-blue-500 px-4 py-2 rounded text-white ml-4" id="download-qr">Tải Xuống</button>
+                <button class="bg-blue-500 px-4 py-2 rounded text-white ml-4" id="download-qr">
+                 <a download="${products.data[index][2]}.png" href="${uri}">Tải Xuống</a>
+                </button>
             `);
+            $('#url-preview').html(`<a href="${baseURL}">${baseURL}</a>`)
 
             $('#copy-qr').click(() => {
-              var uri = document.querySelector('#qr-preview img').src;
+              // var uri = document.querySelector('#qr-preview img').src;
                 QR.copyQR(uri);
             })
-            $('#download-qr').click(() => {
-                var uri = document.querySelector('#qr-preview img').src;
-                console.log(document.querySelector('#qr-preview img').length);
-                QR.downloadQR(uri, products.data[index][2]);
-            })
-            $('#url-preview').html(`<a href="${baseURL}">${baseURL}</a>`)
+            // $('#download-qr').click(() => {
+            //     // var uri = document.querySelector('#qr-preview img').src;
+            //     // console.log(document.querySelector('#qr-preview img').length);
+            //     // QR.downloadQR(uri, products.data[index][2]);
+            // })
         })
      })
   },
