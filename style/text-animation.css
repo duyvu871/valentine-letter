@@ -403,6 +403,9 @@ body {
     overflow-y: scroll;
     overflow-wrap: break-word;
     /* z-index: 4; */
+    overflow-y: scroll;
+    word-wrap: break-word;
+overflow-wrap: break-word;
   }
   
   .envelope {
