@@ -5,6 +5,30 @@ const setLocalStorageItems = (key,items) => {
     localStorage.setItem(key,value)
 }
 
+function waitForElement(querySelector, timeout, typeElement){
+    return new Promise((resolve, reject)=>{
+      var timer = false;
+      if(document.querySelectorAll(querySelector).length) return resolve();
+      const observer = new MutationObserver((m)=>{
+        console.log(m);
+        if(document.querySelectorAll(querySelector).length){
+          observer.disconnect();
+          if(timer !== false) clearTimeout(timer);
+          return resolve();
+        }
+      });
+      observer.observe(document.body, {
+        childList: true, 
+        subtree: true
+      });
+      if(timeout) timer = setTimeout(()=>{
+        observer.disconnect();
+        reject();
+      }, timeout);
+    });
+  }
+  
+
 const deleteLocalStorageItems = (key) => {
     localStorage.removeItem(key)
 }

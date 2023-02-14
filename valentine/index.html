@@ -4,7 +4,10 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta property="og:image" content="https://img.freepik.com/free-vector/simple-happy-valentines-day-celebration-design_1017-29881.jpg">
+    <meta
+      property="og:image"
+      content="https://img.freepik.com/free-vector/simple-happy-valentines-day-celebration-design_1017-29881.jpg"
+    />
     <title>Tri ân khách hàng ngày valentine</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -24,6 +27,7 @@
       html {
         width: 100%;
         height: 100%;
+        overflow: hidden;
       }
 
       body {
@@ -106,7 +110,7 @@
         }
 
         70% {
-          transform: scale(1);
+          transform: scale(1.2);
           /* box-shadow: 0 0 0 10px rgba(0, 0, 0, 0); */
         }
 
@@ -126,14 +130,17 @@
         margin-top: 100px;
         font-size: 1.1rem;
       }
-      .wrap{
+      .wrap {
         display: block;
-      
+
         height: 100%;
+      }
+      .paper-content {
+        word-break: break-all;
       }
     </style>
   </head>
-  <body >
+  <body>
     <div class="heart" id="wrapper">
       <img
         id="blob"
@@ -200,11 +207,16 @@
             document.querySelector(".letter").classList.remove("letter--close");
             document.querySelector(".letter").classList.add("letter--open");
 
-            database
-            .ref("table/" + idUser + '/data/' + idCustomer)
-            .once("value", (snap) => {
-                // console.log(snap.val());
-                const data = snap.val();
+            const ref = database.ref(
+              `/table/${idUser}/data/`
+            );
+
+            // Listen for changes in the filtered data
+            ref
+              .orderByChild("4")
+              .equalTo(idCustomer)
+              .on("child_added", function (snapshot) {
+                const data = snapshot.val();
                 document.title = ""
                 document.querySelector('.paper-content').innerHTML = `
                     <span class="wrap" >
@@ -216,9 +228,8 @@
                   document.querySelector('#content').classList.add('type')
                 }, 2000)             
 
-                }).then((res) => {
-                
-                });
+              });
+            // console.log(snap.val());
           }
         });
 

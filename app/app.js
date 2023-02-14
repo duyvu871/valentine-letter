@@ -6,28 +6,28 @@
 //          ////////////////////////////////////
 //         ||||||||||||||||||||||||||||||||||||
 
-const giftUrl = 'https://valentine-letter.web.app/';
+const giftUrl = "http://192.168.9.24:5501/public/"; //'https://valentine-letter.web.app/';
 
 var config = {
+  apiKey: "AIzaSyAPN93h6dTiJvI1PgVCHtjYt1dllWBnVP4",
+  authDomain: "callmezoo.firebaseapp.com",
+  databaseURL:
+    "https://callmezoo-default-rtdb.asia-southeast1.firebasedatabase.app",
+  projectId: "callmezoo",
+  storageBucket: "callmezoo.appspot.com",
+  messagingSenderId: "860229264546",
+  appId: "1:860229264546:web:21fc2d85954af6ff5123fb",
+  measurementId: "G-0PM4GKLVVV",
 
-    apiKey: "AIzaSyBt_R4PP91N1ea5SRLXP_pbKAvhal2RH9s",
-    authDomain: "valentine-letter.firebaseapp.com",
-    projectId: "valentine-letter",
-    storageBucket: "valentine-letter.appspot.com",
-    messagingSenderId: "88943245557",
-    appId: "1:88943245557:web:208b7f2e3b9eec64772dbc",
-    measurementId: "G-HBRG40XPSP",
-    databaseURL: "https://valentine-letter-default-rtdb.asia-southeast1.firebasedatabase.app",
-
-    // apiKey: "AIzaSyBz3o-st-siQExknjJUCor-a5wfbbF_37g",
-    // authDomain: "valentine-by-hoang.firebaseapp.com",
-    // databaseURL: "https://valentine-by-hoang-default-rtdb.asia-southeast1.firebasedatabase.app",
-    // projectId: "valentine-by-hoang",
-    // storageBucket: "valentine-by-hoang.appspot.com",
-    // messagingSenderId: "801526210971",
-    // appId: "1:801526210971:web:a318a452b589aced02c13e",
-    // measurementId: "G-LRTQH1NW56"
-}
+  // apiKey: "AIzaSyBz3o-st-siQExknjJUCor-a5wfbbF_37g",
+  // authDomain: "valentine-by-hoang.firebaseapp.com",
+  // databaseURL: "https://valentine-by-hoang-default-rtdb.asia-southeast1.firebasedatabase.app",
+  // projectId: "valentine-by-hoang",
+  // storageBucket: "valentine-by-hoang.appspot.com",
+  // messagingSenderId: "801526210971",
+  // appId: "1:801526210971:web:a318a452b589aced02c13e",
+  // measurementId: "G-LRTQH1NW56"
+};
 firebase.initializeApp(config);
 //Real time database
 
@@ -45,10 +45,10 @@ const auth = firebase.auth();
 
 const apiFirebase = new API_Firebase(firebase);
 
-
 let products = {};
 let deleteList = [];
 let qrItemsList = [];
+let uploadList = [];
 
 function signIn() {
   apiFirebase.signIn();
@@ -89,7 +89,7 @@ var addFeatured = {
 
     createFeatured.createGridTable(products);
     addFeatured.addDataToDB(products);
-    hideFeatured.hideModal()
+    hideFeatured.hideModal();
   },
   addToDeleteList(event) {
     const index = Number(event.id.replace("checkbox-", "")) - 1;
@@ -119,7 +119,7 @@ var addFeatured = {
       deleteList = [];
       showFeatured.showDeleteButton();
       addFeatured.addDataToDB(products);
-    //   console.log(deleteList);
+      //   console.log(deleteList);
 
       return;
     }
@@ -158,54 +158,52 @@ var addFeatured = {
       products.columns[colIndex] = text;
     }
   },
+  addToDownloadList(name) {},
 };
 
 var QR = {
-    createQR(id, text, w) {
-        var qr = new QRCode(document.getElementById(id), {
-            // text: text,
-            width: w,
-            height: w,
-            colorDark : "#000000",
-            colorLight : "#ffffff",
-            correctLevel : QRCode.CorrectLevel.H
-        });
+  createQR(id, text, w) {
+    var qr = new QRCode(document.getElementById(id), {
+      text: text,
+      width: w,
+      height: w,
+      colorDark: "#000000",
+      colorLight: "#ffffff",
+      correctLevel: QRCode.CorrectLevel.H,
+    });
+
+    // qr.makeCode(text);
+    return qr;
+  },
+  downloadQR(uri, name) {
+    var link = document.createElement("a");
+    link.href = uri;
     
-        qr.makeCode(text);
-        return qr
-    },
-    downloadQR(uri, name) {
-        var link = document.createElement("a");    
-        link.href = uri;
-        // alert(uri)
-        // alert(name)
-        //set the visibility hidden so it will not effect on your web-layout
-        link.style = "visibility:hidden";
-        link.download = name + ".png";
-        
-        //this part will append the anchor tag and remove it after automatic click
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-    },
-    copyQR(uri) {
-        fetch(uri).then(res => res.blob()).then(blob => {
-            // console.log(blob,);
-            try {
-                navigator.clipboard.write([
-                    new ClipboardItem({
-                        'image/png': blob
-                    })
-                ]);
-            } catch (error) {
-                console.error(error);
-            }
-        })
+    link.style = "visibility:hidden";
+    link.download = name + ".png";
 
-      
-    }
-}
-
+    //this part will append the anchor tag and remove it after automatic click
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  },
+  copyQR(uri) {
+    fetch(uri)
+      .then((res) => res.blob())
+      .then((blob) => {
+        // console.log(blob,);
+        try {
+          navigator.clipboard.write([
+            new ClipboardItem({
+              "image/png": blob,
+            }),
+          ]);
+        } catch (error) {
+          console.error(error);
+        }
+      });
+  },
+};
 
 var createFeatured = {
   createQRImage(id) {},
@@ -244,14 +242,14 @@ var createFeatured = {
                         <td class="p-2 w-2 bg-[#f8f8f8] dark:bg-gray-300 text-center">
                             <span>${checkboxIndex + 1}</span>
                         </td>`;
-                    }
+                    } else if (index === 5) return
 
                     return `
                     <td 
                         data-col="${index + 1}" 
                         data-row="${checkboxIndex + 1}" 
                         onfocusout="addFeatured.addItemByTypeBox(this)" 
-                        contentEditable="true" 
+                        contentEditable="${index !== 4 ? true : false}" 
                         class="max-w-[190px] border-r-[1px] outline-[#15803d] align-text-top whitespace-normal border-[#e5e7eb]
                             py-2 px-2 text-sm font-medium text-gray-900  dark:text-white"
                     >
@@ -310,7 +308,7 @@ var createFeatured = {
                         <h1>${item}</h1>
                     </th>
                     `;
-          }
+          } else if (item === "QR") return
 
           return `
                 <th class=" border-r-[1px] border-[#e5e7eb] relative py-2 px-2 text-left min-w-[170px] text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white z-10">
@@ -371,40 +369,116 @@ var createFeatured = {
     $("#table-list tr").html(listConvert);
     $("#table-items").html(itemsConvert);
     // Modal QR
-    var QRs = [...document.querySelectorAll('[qr-row]')]
+    var QRs = [...document.querySelectorAll("[qr-row]")];
     QRs.map((el, index) => {
-        // console.log(products.data[index][3]);
-        const baseURL = giftUrl+ `valentine/index.html?id=${index}&auth=${apiFirebase.getLogin().uid}`
-        var qr = QR.createQR('qr-' + index ,baseURL, 64);
-        el.addEventListener('click', () => {
-            $('#qr-modal').toggle()
-            $('#customer-name').text(products.data[index][2])
-            $('#qr-preview').html('')            
-            QR.createQR('qr-preview',  baseURL, 200);
-          
-            $('#modal-featured').html(`
+      // console.log(products.data[index][3]);
+      // console.log(el);
+
+      const baseURL =
+        giftUrl +
+        `valentine/index.html?id=${products.data[index][4]}&auth=${
+          apiFirebase.getLogin().uid
+        }`;
+      //kiểm tra xem item đó đã có mã qr chưa
+
+      getStorageURL(apiFirebase.getLogin().uid, "QR", products.data[index][4])
+        .then((url) => {
+          document.querySelector(
+            "#qr-" + index
+          ).innerHTML = `<img  src="${url}" alt="" />`;
+        })
+        .catch((err) => {
+          var qr = QR.createQR("qr-" + index, baseURL, 200);
+
+          document.querySelector("#qr-" + index + " img").onload = (e) => {
+            const url = e.target.src;
+            const upload = uploadFileWithBase64(
+              url,
+              "QR",
+              products.data[index][4]
+            );
+
+            upload.task.on(
+              "state_change",
+              function progress(snap) {
+                console.log((snap.bytesTransferred / snap.totalBytes) * 100);
+                switch (snap.state) {
+                  case firebase.storage.TaskState.PAUSED: // or 'paused'
+                    // console.log('Upload is paused');
+                    break;
+                  case firebase.storage.TaskState.RUNNING: // or 'running'
+                    // console.log('Upload is running');
+                    break;
+                }
+              },
+              function error(error) {
+                // Errors list: https://firebase.google.com/docs/storage/web/handle-errors
+                switch (error.code) {
+                  case "storage/unauthorized":
+                    // User doesn't have permission to access the object
+                    break;
+
+                  case "storage/canceled":
+                    // User canceled the upload
+                    break;
+
+                  case "storage/unknown":
+                    // Unknown error occurred, inspect error.serverResponse
+                    break;
+                }
+              },
+              function completed() {
+                // removeFileStorage()
+                upload.storageChild.getDownloadURL().then((url) => {
+                  document.querySelector(
+                    "#qr-" + index
+                  ).innerHTML = `<img src="${url}" alt="" />`;
+                  //adđ qr url
+                  database
+                  .ref("table/" + auth.currentUser.uid + `/data/${index}/5`)
+                  .set(url);
+                  products.data[index][5] = url
+                  console.log(url);
+                  // document.querySelector('#background').src = url
+                });
+              }
+            );
+          };
+        });
+  
+      
+      el.addEventListener("click", () => {
+        const qrURL = products.data[index][5]
+
+        $("#qr-modal").toggle();
+        $("#customer-name").text(products.data[index][2]);
+        $("#qr-preview").html("");
+        $('#qr-preview').html(`<img  src="${qrURL}" alt="" />`)
+        // QR.createQR('qr-preview',  baseURL, 200);
+
+        $("#modal-featured").html(`
                 <button class="bg-gray-300 px-4 py-2 rounded" id="copy-qr">Copy</button>
                 <button class="bg-blue-500 px-4 py-2 rounded text-white ml-4" id="download-qr">
-                 Tải xuống
+                    Tải xuống
                 </button>
-                <a download="${products.data[index][2]}.png" href="${""}" style="display:none">Tải Xuống</a>
+                 <a download="${
+                  products.data[index][2]
+                }.png" href="${qrURL}" style="display:none">
+                  
+                </a>
             `);
-            $('#url-preview').html(`<a href="${baseURL}">${baseURL}</a>`)
+        $("#url-preview").html(`<a href="${baseURL}">${baseURL}</a>`);
 
-            $('#copy-qr').click(() => {
-              // var uri = document.querySelector('#qr-preview img').src;
-                QR.copyQR(uri);
-            }) 
-         
-            $('#download-qr').click(() => {
-                var uri = document.querySelector('#qr-preview img').src;
-                // console.log(document.querySelector('#qr-preview img').src);
-                // QR.downloadQR(uri, products.data[index][2]);
-                document.querySelector('#modal-featured a').href = uri
-                document.querySelector('#modal-featured a').click()
-            })
-        })
-     })
+        $("#copy-qr").click(() => {
+          // var uri = document.querySelector('#qr-preview img').src;
+          QR.copyQR(qrURL);
+        });
+
+        $("#download-qr").click(() => {
+          downloadFile(qrURL)
+        });
+      });
+    });
   },
   setProfile(user, background) {
     const html = `
@@ -479,15 +553,15 @@ var showFeatured = {
     $(".delete-row").addClass("hidden");
     return;
   },
-//   showTransferQRButton() {
-//     if (deleteList.length) {
-//       $(".delete-row").removeClass("hidden");
-//       return;
-//     }
+  //   showTransferQRButton() {
+  //     if (deleteList.length) {
+  //       $(".delete-row").removeClass("hidden");
+  //       return;
+  //     }
 
-//     $(".delete-row").addClass("hidden");
-//     return;
-//   },
+  //     $(".delete-row").addClass("hidden");
+  //     return;
+  //   },
   showColumnOption(event) {
     const select = `#${event.id}_option`;
     const relativeIndex = event.id.replace("col-", "");
@@ -567,7 +641,6 @@ function checkboxAll(event) {
     });
     deleteList = [];
     showFeatured.showDeleteButton();
-
   }
 }
 
@@ -604,21 +677,28 @@ $(".exportTable button").click(function () {
   exportTable(fileName);
 });
 
-$('#qr-modal-overlay').click(() => {
-    $('#qr-modal').toggle();
-    $('#modal-featured').html("");
-})
+$("#qr-modal-overlay").click(() => {
+  $("#qr-modal").toggle();
+  $("#modal-featured").html("");
+});
 
-$('#close-qr-modal').click(() => {
-    $('#qr-modal').toggle()
-})
+$("#close-qr-modal").click(() => {
+  $("#qr-modal").toggle();
+});
 
 function changeState(state) {
   $("#login-button").addClass("hidden");
   $("#logout-button").removeClass("hidden");
 }
 
-
+function generateRandomID() {
+  return ([1e7] + -1e3 + -4e3).replace(/[018]/g, (c) =>
+    (
+      c ^
+      (crypto.getRandomValues(new Uint8Array(1))[0] & (15 >> (c / 4)))
+    ).toString(36)
+  );
+}
 
 auth.onAuthStateChanged((user) => {
   if (user) {
@@ -630,17 +710,25 @@ auth.onAuthStateChanged((user) => {
       .ref("table/" + uid)
       .once("value", (snap) => {
         if (snap.val()) getProduct();
-        else
-          database
-            .ref("table/" + uid)
-            .set({
-              columns: ["STT", "Select", 'Tên khách', "Lời chúc"],
-              data: [["", false, "Cao Mỹ Linh", "Chúc mừng valentine"]],
-            });
+        else {
+          database.ref("table/" + uid).set({
+            columns: ["STT", "Select", "Tên khách", "Lời chúc", "ID", "QR"],
+            data: [
+              [
+                "",
+                false,
+                "Cao Mỹ Linh",
+                "Chúc mừng valentine",
+                generateRandomID(),
+                ""
+              ],
+            ],
+          });
+          getProduct();
+        }
       })
       .then((res) => {
-        getProduct();
-        
+        // getProduct();
       });
 
     firebase
@@ -657,8 +745,7 @@ auth.onAuthStateChanged((user) => {
     createFeatured.createContent();
   }
 
-//   document.addEventListener("DOMContentLoaded", ()=> {
-    
-//   })
+  //   document.addEventListener("DOMContentLoaded", ()=> {
 
+  //   })
 });

@@ -1,12 +1,12 @@
 var config = {
-    apiKey: "AIzaSyBt_R4PP91N1ea5SRLXP_pbKAvhal2RH9s",
-    authDomain: "valentine-letter.firebaseapp.com",
-    projectId: "valentine-letter",
-    storageBucket: "valentine-letter.appspot.com",
-    messagingSenderId: "88943245557",
-    appId: "1:88943245557:web:208b7f2e3b9eec64772dbc",
-    measurementId: "G-HBRG40XPSP",
-    databaseURL: "https://valentine-letter-default-rtdb.asia-southeast1.firebasedatabase.app",
+    apiKey: "AIzaSyAPN93h6dTiJvI1PgVCHtjYt1dllWBnVP4",
+    authDomain: "callmezoo.firebaseapp.com",
+    databaseURL: "https://callmezoo-default-rtdb.asia-southeast1.firebasedatabase.app",
+    projectId: "callmezoo",
+    storageBucket: "callmezoo.appspot.com",
+    messagingSenderId: "860229264546",
+    appId: "1:860229264546:web:21fc2d85954af6ff5123fb",
+    measurementId: "G-0PM4GKLVVV"
 }
 firebase.initializeApp(config);
 //Real time database

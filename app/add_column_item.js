@@ -8,8 +8,15 @@ function modal(data, type, evt) {
               data
                 .map((item, index) => {
                   if (item === false) return;
-                  else if (item == "Select") return;
+                  else if (item === "QR") return;
+                  else if (item === "Select") return;
                   else if (item === "STT") return;
+                  else if (item === "ID") return `
+                  <div class="${item}" class="relative mb-5 mt-2">
+                          <label for="${item}-${index}" class="text-gray-800 text-sm font-bold leading-tight tracking-normal">${item}</label>
+                          <input value="${generateRandomID()}" readonly id="${item}-${index}" name="${item}-${index}" class="text-gray-600 focus:outline-none focus:border focus:border-indigo-700 font-normal w-full h-10 flex items-center pl-4 text-sm border-gray-300 rounded border" placeholder="Nhập ${item}......" />
+                  </div>
+                  `
                   return `
                 <div class="${item}" class="relative mb-5 mt-2">
                         <label for="${item}-${index}" class="text-gray-800 text-sm font-bold leading-tight tracking-normal">${item}</label>

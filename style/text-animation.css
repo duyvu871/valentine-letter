@@ -400,6 +400,8 @@ body {
     border-radius: 2px;
     position: relative;
     border-radius: 10px;
+    overflow-y: scroll;
+    overflow-wrap: break-word;
     /* z-index: 4; */
   }
   
