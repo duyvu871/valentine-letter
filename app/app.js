@@ -6,7 +6,7 @@
 //          ////////////////////////////////////
 //         ||||||||||||||||||||||||||||||||||||
 
-const giftUrl = 'https://valentine-letter.web.app/';
+const giftUrl = 'https://duyvu871.github.io/valentine-letter/';
 
 var config = {
 
