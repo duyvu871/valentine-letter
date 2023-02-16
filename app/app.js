@@ -385,7 +385,7 @@ var createFeatured = {
         .then((url) => {
           document.querySelector(
             "#qr-" + index
-          ).innerHTML = `<img  src="${url}" alt="" />`;
+          ).innerHTML = `<img class="qr" src="${url}" alt="" />`;
         })
         .catch((err) => {
           var qr = QR.createQR("qr-" + index, baseURL, 200);
