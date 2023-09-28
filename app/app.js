@@ -6,7 +6,7 @@
 //          ////////////////////////////////////
 //         ||||||||||||||||||||||||||||||||||||
 
-const giftUrl = "https://duyvu871.github.io/happy-birthday" // valentine-letter/"//"http://192.168.9.24:5501/public/"; //'https://valentine-letter.web.app/';
+const giftUrl = "https://duyvu871.github.io/valentine-letter/"//"http://192.168.9.24:5501/public/"; //'https://valentine-letter.web.app/';
 
 var config = {
   apiKey: "AIzaSyAPN93h6dTiJvI1PgVCHtjYt1dllWBnVP4",
@@ -376,7 +376,7 @@ var createFeatured = {
 
       const baseURL =
         giftUrl +
-        `valentine/index.html?id=${products.data[index][4]}&auth=${
+        `happy-birthday/index.html?id=${products.data[index][4]}&auth=${
           apiFirebase.getLogin().uid
         }`;
       //kiểm tra xem item đó đã có mã qr chưa
