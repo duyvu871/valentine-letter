@@ -1,0 +1,284 @@
+html {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+body {
+    font-family: "Paytone One", sans-serif;
+    display: flex;
+    background: #ffe4db;
+    overflow: hidden;
+}
+
+body {
+    /* background: linear-gradient(45deg,pink,violet); */
+    width: 100vw;
+    height: 100vh;
+    margin: 0px;
+    overflow: hidden;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    overflow: hidden;
+}
+
+#container {
+    min-width: 30%;
+    min-height: 30%;
+    backdrop-filter: blur(5px);
+    background: rgba(0, 0, 0, 0);
+    box-shadow: 5px 5px 5px 2px black;
+    border-radius: 20px;
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 30px;
+    padding: 5px 10px;
+    /* font-family: "Poppins",sans-serif; */
+}
+
+.balloon {
+    color: rgb(255, 0, 102);
+    font-size: 25px;
+    position: absolute;
+    animation: heartMove linear infinite;
+    top: -10vh;
+    z-index: 0;
+}
+
+
+.balloon {
+    width: fit-content;
+}
+
+.balloon>img:nth-child(even) {
+    animation: balloon-rotate-right linear infinite;
+    /* transition: transform 1s ease; */
+
+    /* transform: rotate(90deg); */
+}
+
+.balloon>img:nth-child(odd) {
+    animation: balloon-rotate-left linear infinite;
+}
+
+
+
+.heart {
+
+    height: 100px;
+}
+
+.heart img {
+    width: 90vw;
+    max-width: 100% !important;
+}
+
+img {
+    max-width: 60% !important;
+}
+
+#blob {
+    /* background: black; */
+    /* border-radius: 50%; */
+    /* box-shadow: #f7cfc1; */
+    /* margin: 10px; */
+    /* height: 20px;
+width: 20px; */
+    transform: scale(1);
+    animation: pulse-black 2s infinite;
+}
+
+.lighting-star img {
+    max-width: 100% !important;
+    /* height: 250px; */
+}
+
+.lighting-star {
+    height: 120px;
+    position: relative;
+    z-index: 10;
+}
+
+.image-hanging {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
+.image-hanging img {
+    /* border-radius: 10px; */
+    /* animation: balloon-rotate-left linear infinite; */
+}
+
+.image-hanging img:nth-child(1) {
+    width: 100px;
+    position: absolute;
+    top: 80px;
+    right: 24px;
+    transform: rotate(-10deg);
+}
+.image-hanging img:nth-child(2) {
+    width: 150px;
+    position: absolute;
+    top: 45px;
+    left: 20px;
+    transform: rotate(10deg);
+}
+.image-hanging img:nth-child(3) {
+    width: 120px;
+    position: absolute;
+    top: 186px;
+    left: 238px;
+    transform: rotate(-15deg);
+}
+.image-hanging img:nth-child(4) {
+    width: 100px;
+    top: 189px;
+    position: absolute;
+    left: 41px;
+    transform: rotate(-7deg);
+}
+.image-hanging img:nth-child(5) {
+    width: 100px;
+    position: absolute;
+    bottom: 402px;
+    left: 46px;
+    transform: rotate(21deg);
+}
+
+.image-hanging img:nth-child(6) {
+    width: 180px;
+    position: absolute;
+    bottom: 220px;
+    right: 10px;
+    transform: rotate(-25deg);
+}
+
+.image-hanging img:nth-child(7) {
+    width: 180px;
+    position: absolute;
+    bottom: 100px;
+    left: 10px;
+    transform: rotate(17deg);
+}
+
+.float-img {
+    transform: translateY(-10%);
+    animation: floater 1.5s infinite;
+    /* transition: ease 0.5s; */
+}
+
+
+#to {
+    font-size: 0.8rem;
+    margin-bottom: 10px;
+}
+
+#content {
+    /* text-align: center; */
+    /* display: flex;
+place-content: center; */
+    margin-top: 100px;
+    font-size: 1.1rem;
+}
+
+.wrap {
+    display: block;
+
+    height: 100%;
+}
+
+.paper-content {
+    word-break: break-all;
+}
+
+
+@keyframes pulse-black {
+    0% {
+        transform: scale(0.92);
+        /* box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.7); */
+    }
+
+    70% {
+        transform: scale(1.2);
+        /* box-shadow: 0 0 0 10px rgba(0, 0, 0, 0); */
+    }
+
+    100% {
+        transform: scale(0.92);
+        /* box-shadow: 0 0 0 0 rgba(0, 0, 0, 0); */
+    }
+}
+
+@keyframes floater {
+    0%{
+        transform: translateY(-10%);
+        transition: ease 0.5s;
+    }
+    50%{
+        transform: translateY(10%);
+        transition: ease 0.5s;
+    }
+}
+
+@keyframes balloon-rotate-right {
+    0% {
+        transform: rotate(-30deg);
+    }
+
+    25% {
+        transform: rotate(0deg);
+    }
+
+    50% {
+        transform: rotate(30deg);
+    }
+
+    75% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(-30deg);
+    }
+}
+
+@keyframes balloon-rotate-left {
+    0% {
+        transform: rotate(30deg);
+    }
+
+    25% {
+        transform: rotate(0deg);
+    }
+
+    50% {
+        transform: rotate(-30deg);
+    }
+
+    75% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(30deg);
+    }
+}
+
+@keyframes heartMove {
+    0% {
+        transform: translateY(-10vh);
+        /* transform: rotate(45deg); */
+    }
+
+    100% {
+        transform: translateY(110vh);
+        /* transform: rotate(0deg); */
+    }
+}
+

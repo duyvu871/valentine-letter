@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chúc mừng sinh nhật</title>
+    <link rel="stylesheet" href="./style/reset.css" />
+    <link rel="stylesheet" href="./style/background.css" />
+    <link rel="stylesheet" href="./style/slide.css" />
+    <link rel="stylesheet" href="./style//template.css" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Paytone+One&display=swap" rel="stylesheet" />
+    <script src="https://kit.fontawesome.com/4f3ce16e3e.js" crossorigin="anonymous"></script>
+    <!-- <link rel="stylesheet" href="../style/text-animation.css" /> -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase.js"></script>
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script> -->
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="header"></div>
+        <div class="main-content swiper">
+            <ul class="template-slide swiper-wrapper">
+                <li class="template-item swiper-slide">
+                    <div class="template-item-image">
+                        <img src="../assets/vecteezy_pixel-heart-icon_10528948-removebg-preview.png" alt="" srcset="" />
+                    </div>
+                    <div class="template-quote">
+                        <div class="template-quote-title">Happy birthday</div>
+                        <h3>
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui
+                            nisi aperiam quibusdam, eum error soluta suscipit nobis ipsam
+                            eos molestias totam repellendus voluptas, illo consectetur
+                            recusandae, ratione facilis deserunt. Quis.
+                        </h3>
+                    </div>
+                </li>
+                <li class="template-item swiper-slide">
+                    <div class="template-item-image">
+                        <img src="../assets/vecteezy_pixel-heart-icon_10528948-removebg-preview.png" alt="" srcset="" />
+                    </div>
+                    <div class="template-quote">
+                        <div class="template-quote-title">Happy birthday</div>
+                        <h3>
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui
+                            nisi aperiam quibusdam, eum error soluta suscipit nobis ipsam
+                            eos molestias totam repellendus voluptas, illo consectetur
+                            recusandae, ratione facilis deserunt. Quis.
+                        </h3>
+                    </div>
+                </li>
+                <li class="template-item swiper-slide">
+                    <div class="template-item-image">
+                        <img src="../assets/vecteezy_pixel-heart-icon_10528948-removebg-preview.png" alt="" srcset="" />
+                    </div>
+                    <div class="template-quote">
+                        <div class="template-quote-title">Happy birthday</div>
+                        <h3>
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui
+                            nisi aperiam quibusdam, eum error soluta suscipit nobis ipsam
+                            eos molestias totam repellendus voluptas, illo consectetur
+                            recusandae, ratione facilis deserunt. Quis.
+                        </h3>
+                    </div>
+                </li>
+                <li class="template-item swiper-slide">
+                    <div class="template-item-image">
+                        <img src="../assets/vecteezy_pixel-heart-icon_10528948-removebg-preview.png" alt="" srcset="" />
+                    </div>
+                    <div class="template-quote">
+                        <div class="template-quote-title">Happy birthday</div>
+                        <h3>
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui
+                            nisi aperiam quibusdam, eum error soluta suscipit nobis ipsam
+                            eos molestias totam repellendus voluptas, illo consectetur
+                            recusandae, ratione facilis deserunt. Quis.
+                        </h3>
+                    </div>
+                </li>
+                <li class="template-item swiper-slide">
+                    <div class="template-item-image">
+                        <img src="../assets/vecteezy_pixel-heart-icon_10528948-removebg-preview.png" alt="" srcset="" />
+                    </div>
+                    <div class="template-quote">
+                        <div class="template-quote-title">Happy birthday</div>
+                        <h3>
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui
+                            nisi aperiam quibusdam, eum error soluta suscipit nobis ipsam
+                            eos molestias totam repellendus voluptas, illo consectetur
+                            recusandae, ratione facilis deserunt. Quis.
+                        </h3>
+                    </div>
+                </li>
+            </ul>
+            <div class="slide-index swiper-pagination">
+                <div class="slider-previous">
+                    <svg height="50px" id="Layer_1" style="enable-background:new 0 0 50 50;" version="1.1" viewBox="0 0 512 512" width="50px" color="#fff" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><polygon points="352,115.4 331.3,96 160,256 331.3,416 352,396.7 201.5,256 "/></svg>
+                </div>
+                <div class="slider-next" style="transform: rotate(180deg);">
+                    <svg height="50px" id="Layer_1" style="enable-background:new 0 0 50 50;" version="1.1" viewBox="0 0 512 512" width="50px" color="#fff" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><polygon points="352,115.4 331.3,96 160,256 331.3,416 352,396.7 201.5,256 "/></svg>
+                </div>
+                <!-- <p class="dot"></p>
+                <p class="dot"></p>
+                <p class="dot"></p> -->
+            </div>
+        </div>
+        <div class="footer"></div>
+    </div>
+    <!-- <script src="./app.js"></script> -->
+    <script>
+        //slider
+        class Slider {
+            constructor(
+                sliderElementClass = '.slider', 
+                {
+                    speed = 400, 
+                    hideArrow  = false, 
+                    autoPlay = false, 
+                    buttonTemplate = '' 
+                }
+            ) 
+            {
+                this.slider =  document.querySelector(sliderElementClass);
+                this.sliderWrapper = document.querySelector(sliderElementClass + '-wrapper');
+                this.sliderItem = [...document.querySelectorAll(sliderElementClass + '-slide')];                
+                this.sliderSpeed = speed;
+                this.sliderPagination = [];
+                this.autoPlay  = autoPlay;
+                //create navigation button
+
+            }
+
+            goNext() {
+
+            } // move slide item to the next
+            goPrevious() {
+
+            } // move slide item to the previous
+        }
+    </script>
+    <script>
+        const url = new URL(location.href);
+
+        const idCustomer = url.searchParams.get("id") ?? 0;
+
+        const idUser = url.searchParams.get("auth") ?? null;
+
+        const body = document.querySelector("body");
+
+        let slideIndex = 0;
+
+        const dot = '<span class="dot"></span>';
+    </script>
+</body>
+
+</html>
